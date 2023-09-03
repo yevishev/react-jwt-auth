@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+import mainLogo from '../static/img/random-logo-png-transparent.png';
+import logoGit from '../static/img/git.svg';
+import logoGoogle from '../static/img/ggl.svg';
+
 export default (() => {
     const [showPasswordInput, setShowPasswordInput] = useState(false);
 
@@ -11,7 +15,7 @@ export default (() => {
         <div className="container">
             <div className="block">
                 <div className="logo-block" >
-                    <img src="/static/img/random-logo-png-transparent.png" className="logo-block__img" alt="" />
+                    <img src={mainLogo} className="logo-block__img" alt="" />
                 </div>
                 <div className="welcome-text-block" >
                     <p className="wtb__header">Welcome</p>
@@ -39,7 +43,7 @@ export default (() => {
                 <div className="buttons-auth-block">
                     <button className="buttons-auth-block__btn">
                         <span>
-                            <img src="/static/img/git.svg" alt="" />
+                            <img src={logoGit} alt="" />
                         </span>
                         <span className="bab__text">
                             Continue with GitHub
@@ -47,7 +51,7 @@ export default (() => {
                     </button>
                     <button className="buttons-auth-block__btn">
                         <span>
-                            <img src="/static/img/ggl.svg" alt="" />
+                            <img src={logoGoogle} alt="" />
                         </span>
                         <span className="bab__text">
                             Continue with Google
