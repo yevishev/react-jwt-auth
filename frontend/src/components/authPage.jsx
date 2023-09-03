@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import mainLogo from '../static/img/random-logo-png-transparent.png';
 import logoGit from '../static/img/git.svg';
@@ -6,6 +6,15 @@ import logoGoogle from '../static/img/ggl.svg';
 
 export default (() => {
     const [showPasswordInput, setShowPasswordInput] = useState(false);
+    const [email, setEmail] = useState('');
+
+    const handelEmailInput = (e) => {
+        setEmail(e.target.value);
+    }
+
+    useEffect(() => {
+        console.log(email);
+    }, [email]);
 
     const handleContinueClick = () => {
         setShowPasswordInput(true);
@@ -22,7 +31,12 @@ export default (() => {
                     <p className="wtb__text">Log in to RanCo to continue to RanCo.</p>
                 </div>
                 <div className="input-block">
-                    <input type="email" className="eib__input" placeholder="Email" />
+                    <input
+                        onInput={handelEmailInput}
+                        type="email"
+                        className="eib__input"
+                        placeholder="Email"
+                    />
                 </div>
                 {showPasswordInput && (
                     <div className="input-block">
