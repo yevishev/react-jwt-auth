@@ -62,6 +62,7 @@ body {
     border: 1px solid rgb(226, 226, 226);
     border-radius: 5px;
     transition: box-shadow .2s ease-in-out,border-color .2s ease-in-out;
+    outline: none;
 
     font-size: 20px;
 }
