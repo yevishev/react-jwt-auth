@@ -1,9 +1,14 @@
-import Form from './Form';
+import React from 'react';
+import Form from './Form/Form';
+import AuthButton from './AuthButton/authButton';
+
+
 import mainLogo from '../static/img/random-logo-png-transparent.png';
 import logoGit from '../static/img/git.svg';
 import logoGoogle from '../static/img/ggl.svg';
 
 export default (() => {
+
     return (
         <div className="container">
             <div className="block">
@@ -19,22 +24,8 @@ export default (() => {
                     <p>or</p>
                 </div>
                 <div className="buttons-auth-block">
-                    <button className="buttons-auth-block__btn">
-                        <span>
-                            <img src={logoGit} alt="" />
-                        </span>
-                        <span className="bab__text">
-                            Continue with GitHub
-                        </span>
-                    </button>
-                    <button className="buttons-auth-block__btn">
-                        <span>
-                            <img src={logoGoogle} alt="" />
-                        </span>
-                        <span className="bab__text">
-                            Continue with Google
-                        </span>
-                    </button>
+                    <AuthButton text="Continue with GitHub" logo={logoGit} />
+                    <AuthButton text="Continue with Google" logo={logoGoogle} />
                 </div>
             </div>
         </div>

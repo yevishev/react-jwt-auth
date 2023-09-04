@@ -50,10 +50,6 @@ body {
     margin-bottom: 10px;
 }
 
-.input-block {
-    margin-bottom: 10px;
-}
-
 .eib__input {
     width: 298px;
     height: 30px;
@@ -88,28 +84,6 @@ body {
     gap: 10px;
 }
 
-.buttons-auth-block__btn {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-
-    width: 320px;
-    height: 52px;
-    padding-left: 14px;
-    background-color: rgb(255, 255, 255);
-    font-size: 20px;
-    border-radius: 5px;
-    border: 1px solid rgb(239, 236, 236);
-
-    cursor: pointer;
-    font-family: 'Manrope', sans-serif;
-}
-
-.bab__text {
-    font-size: 16px;
-    padding-bottom: 2px;
-}
 .buttons-auth-block__btn:hover {
     background-color: rgb(251, 251, 251);
 }

@@ -1,0 +1,22 @@
+.button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    width: 320px;
+    height: 52px;
+    padding-left: 14px;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(239, 236, 236);
+
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+}
+
+.text {
+    font-size: 16px;
+    padding-bottom: 2px;
+}
