@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './AuthButton.module.css';
 
-export default ((text, logo) => {
+export default ((props) => {
     return (
         <button className={styles.button}>
             <span>
-                <img src={logo} alt="" />
+                <img src={props.logo} alt="" />
             </span>
             <span className={styles.text}>
-                {text}
+                {props.text}
             </span>
         </button>
     );
