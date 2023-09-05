@@ -13,14 +13,14 @@
 
 }
 .block {
-
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
 
     width: 400px;
-    height: 600px;
+    height: auto;
 
     background-color: #fff;
     box-shadow: 1px 5px 11px 1px rgba(182, 181, 181, 0.5);

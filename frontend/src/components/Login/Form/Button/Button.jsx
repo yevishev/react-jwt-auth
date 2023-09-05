@@ -1,12 +1,13 @@
 import React from 'react';
+
 import styles from './Button.module.css';
 
-export default ((props) => {
+export default (({type, text}) => {
     return (
         <button
-            type={props.type}
+            type={type}
             className={styles.button}>
-            {props.text}
+            {text}
         </button>
     );
 });

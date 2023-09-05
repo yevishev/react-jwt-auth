@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './Header.module.css';
 
-import mainLogo from '../../static/img/random-logo-png-transparent.png';
+import mainLogo from '../../../static/img/random-logo-png-transparent.png';
 
 export default (() => {
     return (
