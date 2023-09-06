@@ -7,8 +7,10 @@ import styles from './Home.module.css';
 export default (() => {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+      setIsLoading(true);
       api.session.get().then((isValid) => {
           if (!isValid.res) {
               navigate('/login');
@@ -16,16 +18,20 @@ export default (() => {
           }
           setData(isValid);
       });
+      setIsLoading(false);
     }, []);
 
     const handleLogout = () => {
+      setIsLoading(true);
       api.session.delete().then(() => {
         navigate('/login')
-      })
+      });
+
+      setIsLoading(false);
     }
 
     return (
-        <div className={styles.userProfile} >
+        <div className={styles.userProfile}>
           <h1>User Profile</h1>
           <div className={styles.userInfo}>
             <p>Email: {data.email}</p>
@@ -35,6 +41,7 @@ export default (() => {
                 onClick={handleLogout}
                 href="#">Logout</a>
           </div>
+          {isLoading && <Spinner />}
         </div>
       );
 });
