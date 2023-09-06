@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 
+import Spinner from '../Spinner/Spinner';
+
 import api from '../../libs/api';
 import styles from './Home.module.css';
 
@@ -17,17 +19,16 @@ export default (() => {
               return;
           }
           setData(isValid);
+          setIsLoading(false);
       });
-      setIsLoading(false);
     }, []);
 
     const handleLogout = () => {
       setIsLoading(true);
       api.session.delete().then(() => {
         navigate('/login')
+        setIsLoading(false);
       });
-
-      setIsLoading(false);
     }
 
     return (

@@ -22,16 +22,16 @@ export default (() => {
             if (isValid.res) {
                 navigate('/');
             }
+            setIsLoading(false);
         });
-        setIsLoading(false);
     }, []);
 
     const login = (email, password) => {
         setIsLoading(true);
         api.session.post(email, password).then(() => {
             navigate('/');
+            setIsLoading(false);
         });
-        setIsLoading(false);
     }
 
     return (
