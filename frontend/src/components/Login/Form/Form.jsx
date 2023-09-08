@@ -7,7 +7,7 @@ function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
 }
 
-export default (({ onSubmit }) => {
+export default (({ onSubmit, loginError, setLoginError }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,6 +19,7 @@ export default (({ onSubmit }) => {
 
     useEffect(() => {
         setError(null);
+        setLoginError(null);
     }, [password, step, email]);
 
     useEffect(() => {
@@ -30,6 +31,10 @@ export default (({ onSubmit }) => {
             setPassword('');
         }
     }, [step]);
+
+    useEffect(() => {
+        setError(loginError);
+    }, [loginError]);
 
     const proceed = (e) => {
         e.preventDefault();
@@ -44,7 +49,7 @@ export default (({ onSubmit }) => {
 
         if (step === 'password') {
             if (password) {
-                onSubmit(email, password);
+                onSubmit(email, password, error);
             } else {
                 setError('Enter password');
             }
@@ -69,6 +74,7 @@ export default (({ onSubmit }) => {
                     onChange={setPassword}
                     type="password"
                     placeholder="Password"
+                    error={error}
                 />
             )}
 

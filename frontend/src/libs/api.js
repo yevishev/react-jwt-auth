@@ -3,27 +3,30 @@ import axios from "axios";
 export default {
     session: {
         get: async () => {
-            const response = await axios.get('/session', {
+            return axios.get('/session', {
                 withCredentials: true
+            }).then((response) => {
+                return response.data;
             });
-            return response.data;
         },
 
         post: async (email, password) => {
-            const response = await axios.post('/session', {
+            return axios.post('/session', {
                 email,
                 password
             }, {
                 withCredentials: true
+            }).then((response) => {
+                return response.data;
             });
-            return response.data;
         },
 
         delete: async () => {
-            const response = await axios.delete('/session', {
+            return axios.delete('/session', {
                 withCredentials: true
-            });
-            return response.data;
+            }).then((response) => {
+                return response.data;
+            }); 
         }
     }
 }
