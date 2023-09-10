@@ -5,6 +5,7 @@ import Spinner from '../Spinner/Spinner';
 
 import api from '../../libs/api';
 import styles from './Home.module.css';
+import Tictactoe from './Tictactoe/Tictactoe';
 
 export default (() => {
   const navigate = useNavigate();
@@ -14,10 +15,14 @@ export default (() => {
   useEffect(() => {
     setIsLoading(true);
     api.session.get()
+      .then((response) => {
+        setData(response);
+      })
       .catch(() => {
         navigate('/login');
       }).then(() => {
         setIsLoading(false);
+        
       });
   }, []);
 
@@ -28,7 +33,7 @@ export default (() => {
       navigate('/login')
     });
   }
-
+    
   return (
     <div className={styles.userProfile}>
       <h1>User Profile</h1>
@@ -41,6 +46,7 @@ export default (() => {
           href="#">Logout</a>
       </div>
       {isLoading && <Spinner />}
+      <Tictactoe />
     </div>
   );
 });

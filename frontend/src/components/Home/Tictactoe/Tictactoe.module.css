@@ -1,0 +1,25 @@
+.board {
+    margin: 60px auto;
+    width: 186px;
+    height: 186px;
+    background-color: rgb(234, 234, 234);
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+.value {
+    font-size: 34px;
+}
