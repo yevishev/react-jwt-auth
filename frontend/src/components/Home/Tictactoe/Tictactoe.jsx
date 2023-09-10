@@ -21,12 +21,10 @@ export default () => {
             for (let j = 1; j < 3; j++) {
                 if (val == matrix[i][j]) {
                     count++;
-                    console.log(count);
                     if (count == 3) {
                         setWinner(val);
                         return;
                     }
-                    continue;
                 } else {
                     break
                 }
@@ -45,12 +43,10 @@ export default () => {
             for (let j = 1; j < 3; j++) {
                 if (val == matrix[j][i]) {
                     count++;
-                    console.log(count);
                     if (count == 3) {
                         setWinner(val);
                         return;
                     }
-                    continue;
                 } else {
                     break
                 }
