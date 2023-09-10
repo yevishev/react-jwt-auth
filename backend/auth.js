@@ -34,14 +34,10 @@ export const createUUID = () => {
   return uuid()
 }
 
-export const getSalt = () => {
-  return config.SALT;
-}
-
 export const generateSalt = () => {
   return crypto.randomBytes(128).toString('base64');
 };
 
-export const getPasswordHash = async (password, salt, iterations) => {
-  return crypto.pbkdf2Sync(password, salt, iterations, 512, config.HASH_FUNC).toString('hex');
+export const getPasswordHash = async (password, iterations) => {
+  return crypto.pbkdf2Sync(password, config.SALT, 10000, 512, config.HASH_FUNC).toString('hex');
 };

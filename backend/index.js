@@ -1,5 +1,5 @@
 import express from 'express';
-import { createJWT, readJWT, getSalt, getPasswordHash } from './auth.js';
+import { createJWT, readJWT, getPasswordHash } from './auth.js';
 import cookieParser from 'cookie-parser';
 import sqlite3 from 'sqlite3';
 
@@ -45,16 +45,15 @@ const dbRun = (query, args) => {
 
 app.post('/session', async (req, res) => {
     const email = req.body.email;
-    const salt = getSalt();
-    const passwordHash = await getPasswordHash(req.body.password, salt, 10000);
-
+    const passwordHash = await getPasswordHash(req.body.password);
+    
     const row = await dbRun('SELECT * FROM users WHERE email = ? and password_hash = ?', [email, passwordHash]);
 
     if (!row) {
         try {
             await dbRun('INSERT INTO users (email, password_hash) VALUES (?, ?)', [email, passwordHash]);
         } catch(err) {
-            console.error('Error in /session route:', err.toString());
+            console.error('Error in POST/session route:', err.toString());
             res.status(403).json({ error: 'Invalid email or password' });
             return;
         }
@@ -74,11 +73,11 @@ app.post('/session', async (req, res) => {
 app.get('/session', (req, res) => {
     const cookies = req.cookies
     readJWT(cookies.token)
-        .then(() => {
-            res.status(200).json();
+        .then((response) => {
+            res.status(200).json(response);
         })
         .catch(error => {
-            console.error('Error in /session route:', error);
+            console.error('Error in GET/session route:', error);
             res.status(403).json({ error: 'User is unauthorized' });
         });
 });
