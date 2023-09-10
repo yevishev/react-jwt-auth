@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from './Tictactoe.module.css';
 
-
-
 export default () => {
     const [currentValue, setCurrentValue] = useState('X');
     const [winner, setWinner] = useState('');
@@ -34,6 +32,9 @@ export default () => {
                 }
             }
         }
+    }, [matrix]);
+
+    useEffect(() => {
         //column check
         for (let i = 0; i < 3; i++) {
             let val = matrix[0][i];
@@ -55,13 +56,14 @@ export default () => {
                 }
             }
         }
+    }, [matrix]);
 
+    useEffect(() => {
         //diagonal check
-        val = matrix[1][1];
+        let val = matrix[1][1];
         if ((val == matrix[0][0] && val == matrix[2][2]) || (val == matrix[0][2] && val == matrix[2][0])) {
             setWinner(val);
         }
-
     }, [matrix]);
 
     const handlerOnClick = (rowIndex, cellIndex) => {
